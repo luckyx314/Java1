@@ -1,26 +1,27 @@
 import java.util.Scanner;
 
 class MustBeANumber extends Exception {
-    public MustBeANumber(String str) {
-        super(str);
+    @Override
+    public String getMessage() {
+        return "Input must be a number";
     }
 }
 
 class NotZero extends Exception {
-    public NotZero(String str) {
-        super(str);
+    public String getMessage() {
+        return "Input must be nonzero";
     }
 }
 
 class NotNegative extends Exception {
-    public NotNegative(String str) {
-        super(str);
+    public String getMessage() {
+        return "Input must not be a negative number";
     }
 }
 
 class UnknownShape extends Exception {
-    public UnknownShape(String str) {
-        super(str);
+    public String getMessage() {
+        return "Unknown shape";
     }
 }
 
@@ -43,9 +44,9 @@ public class Main {
                     System.out.print("Enter color: ");
                     String color = sc.nextLine();
                     if (len == 0 || wid == 0)
-                        throw new NotZero("Input must be nonzero");
+                        throw new NotZero();
                     if (wid < 0 || len < 0)
-                        throw new NotNegative("Input must not be a negative number");
+                        throw new NotNegative();
                     shape = new Rectangle(len, wid, color);
                 }  catch (NotZero | NotNegative e) {
                     System.out.println(e.getMessage());
@@ -60,9 +61,9 @@ public class Main {
                     System.out.print("Enter color: ");
                     String col1 = sc.next();
                     if (side == 0)
-                        throw new NotZero("Input must be nonzero");
+                        throw new NotZero();
                     if (side < 0)
-                        throw new NotNegative("Input must not be a negative number");
+                        throw new NotNegative();
                     shape = new Rectangle.Square(side, col1);
                 } catch (NotZero | NotNegative e) {
                     System.out.println(e.getMessage());
@@ -81,9 +82,9 @@ public class Main {
                     System.out.print("Enter color: ");
                     String col2 = sc.next();
                     if (a1 == 0 || b1 == 0)
-                        throw new NotZero("Input must be nonzero");
+                        throw new NotZero();
                     if (a1 < 0 || b1 < 0)
-                        throw new NotNegative("Input must not be a negative number");
+                        throw new NotNegative();
                     shape = new Ellipse(col2, a1, b1);
                     sc.nextLine();
                 } catch (NotZero | NotNegative e) {
@@ -99,9 +100,9 @@ public class Main {
                     System.out.print("Enter color: ");
                     String col3 = sc.next();
                     if (r == 0)
-                        throw new NotZero("Input must be nonzero");
+                        throw new NotZero();
                     if (r < 0)
-                        throw new NotNegative("Input must not be a negative number");
+                        throw new NotNegative();
                     shape = new Ellipse.Circle(col3, r);
                     sc.nextLine();
                 } catch (NotZero | NotNegative e) {
@@ -124,9 +125,9 @@ public class Main {
                     String col = sc.next();
 
                     if (b < 0 || h < 0 || a < 0 || c < 0)
-                        throw new NotNegative("Input must not be a negative number");
+                        throw new NotNegative();
                     if (b == 0 || h == 0 || a == 0 || c == 0)
-                        throw new NotZero("Input must be nonzero");
+                        throw new NotZero();
 
                     shape = new Triangle(col, b, h, a ,c);
 
@@ -143,9 +144,9 @@ public class Main {
                     System.out.print("Enter color: ");
                     String col4 = sc.next();
                     if (s1 == 0)
-                        throw new NotZero("Input must be nonzero");
+                        throw new NotZero();
                     if (s1 < 0)
-                        throw new NotNegative("Input must not be a negative number");
+                        throw new NotNegative();
                     shape = new Triangle.EquilateralTriangle(col4, s1);
                     sc.nextLine();
                 } catch (NotNegative | NotZero e) {
